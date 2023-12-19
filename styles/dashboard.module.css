@@ -1,0 +1,243 @@
+.main {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: url("../public/bkg.JPG");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+}
+
+.contain
+{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(191, 1, 1, 0.578);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contain header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  width: 70px;
+  height: auto;
+  cursor: pointer;
+}
+
+.logo img{
+  width: 100%;
+  height: auto;
+}
+
+.contain header ul{
+  display: flex;
+  list-style: none;
+  text-transform: capitalize;
+}
+
+.contain header ul li{
+  padding: 8px 16px;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+/* @keyframes live {
+  0%{
+    background-color: red;
+
+  }
+  50%{
+    background-color: rgba(255, 0, 0, 0.484);
+
+  }
+  100%{
+    background-color: rgba(255, 0, 0, 0.053);
+  }
+} */
+
+.live{
+  padding: 8px 25px !important;
+  background-color: red;
+  /* animation: live 1s infinite; */
+}
+
+.texte{
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.texte h1{
+  font-size: 3rem;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.texte h1 span{
+  width: 100%;
+  border: 5px solid white;
+  text-align: center;
+  background-color: red;
+  padding: 2px 40px;
+  border-radius: 50px;
+  font-size: 2rem;
+  cursor: pointer;
+  text-align: center;
+}
+.texte h2{
+  font-size: 1.5rem;
+  margin-top: 100px;
+}
+
+.texte h2 span{
+  font-size: 1rem;
+  padding: 2px 20px;
+  background-color: white;
+  color: red;
+  border: 5px solid white;
+  border-radius: 50px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.texte button{
+  padding: 10px 25px;
+  margin: 10px;
+  border-radius: 50px;
+  border: 1px solid red;
+  color: black;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+/* paiment */
+
+.paiment{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.563);
+  z-index: 9988;
+  backdrop-filter: blur(1.5px);
+  align-items: center;
+  justify-content: center;
+}
+
+.paiment form{
+  position: relative;
+  width: 500px;
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 50px;
+  color: white;
+  font-family: 'Matter', sans-serif;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paiment form .close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.paiment form .close img{
+  width: 50px;
+}
+
+.paiment form h2{
+  margin-bottom: 10px;
+}
+
+.paiment form .element{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.paiment form .element select{
+  padding: 10px;
+  border-radius: 30px;
+  padding: 10px 40px;
+  text-transform: uppercase;
+}
+
+.paiment form label{
+  margin-bottom: 5px;
+
+}
+
+.paiment form .element input{
+  width: 100%;
+  border-radius: 30px;
+  padding: 10px 40px;
+}
+
+.paiment form .logoreseau{
+  width: 100%;
+}
+
+.paiment form .logoreseau div{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.paiment form .logoreseau img{
+  width: 100px;
+  height: auto;
+  border-radius: 20px;
+}
+
+.paiment form .total{
+ width: 100%;
+ display: flex;
+ justify-content: space-between;  
+ margin-top: 20px;
+ margin-bottom: 40px;
+}
+
+.paiment form .button{
+  padding: 20px 40px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  border-radius: 50px;
+}
+
+
+.carte{
+  margin-top: 40px;
+  background: black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.lecteur{
+  overflow: hidden;
+}
+
+.lecteur iframe{
+  pointer-events: none !important;
+}
+

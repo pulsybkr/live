@@ -1,0 +1,105 @@
+.main {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: url("../public/bkg.JPG");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+}
+
+.contain
+{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(1, 45, 191, 0.578);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contain header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  width: 70px;
+  height: auto;
+  cursor: pointer;
+}
+
+.logo img{
+  width: 100%;
+  height: auto;
+}
+
+.contain header ul{
+  display: flex;
+  list-style: none;
+  text-transform: capitalize;
+}
+
+.contain header ul li{
+  padding: 8px 16px;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+/* @keyframes live {
+  0%{
+    background-color: red;
+
+  }
+  50%{
+    background-color: rgba(255, 0, 0, 0.484);
+
+  }
+  100%{
+    background-color: rgba(255, 0, 0, 0.053);
+  }
+} */
+
+.live{
+  padding: 8px 25px !important;
+  background-color: red;
+  /* animation: live 1s infinite; */
+}
+
+.texte{
+  margin-bottom: 25px;
+}
+
+.texte h1{
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.texte h1 span{
+  width: 100%;
+  border: 5px solid white;
+  text-align: center;
+  background-color: red;
+  padding: 2px 40px;
+  border-radius: 50px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+.texte h2{
+  font-size: 3rem;
+}
+
+.texte h2 span{
+  padding: 2px 20px;
+  background-color: white;
+  color: red;
+  border: 5px solid white;
+  border-radius: 50px;
+  font-family: 'Courier New', Courier, monospace;
+}
