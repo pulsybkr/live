@@ -18,12 +18,27 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
 }
+
+/* .contain
+{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(191, 1, 1, 0.578);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
 
 .contain header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .logo{
@@ -130,11 +145,13 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.563);
-  z-index: 9988;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 10;
   backdrop-filter: blur(1.5px);
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
+  overflow-y: scroll;
+  padding-top: 100px;
 }
 
 .paiment form{
@@ -241,3 +258,10 @@
   pointer-events: none !important;
 }
 
+.livestream{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 80vh;
+}

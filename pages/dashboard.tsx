@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import PhoneInput from "react-phone-input-2";
 import { v4 as uuidv4 } from "uuid";
-
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import Checkout from "./stripe/checkout";
 const isexist = "http://localhost:8080/live/isreadyexistlive";
 const link = "http://localhost:8080/live/getuserdatalive";
 const linklogout = "http://localhost:8080/live/logout";
@@ -230,7 +231,7 @@ export default function Dashboard() {
   const showLive = () => {
     if (islogacces) {
       // setElementVisible(false);
-      router.push("/live")
+      router.push("/live");
       // Swal.fire(
       //   "En direct bientot",
       //   "Le live n'a pas encore commencer !",
@@ -295,13 +296,23 @@ export default function Dashboard() {
     router.push(`/stripe/stripe?id=${transID}`);
   };
 
+  // paypal truc 
+
+  const initialOptions = {
+    "clientId": "AVgGcFT4K6OPxn_cknjXagLBYYtmd-SbxUtsCNcCIwAtmeoYVQVq58nUfJYLdgkUfjbx4uHXOceXZCZM",
+    currency: "EUR",
+    intent: "capture",
+  };
+
   return (
     <>
       <main className={styles.main}>
         {/* contenaire */}
         <section className={styles.contain}>
           <header>
-            <div className={styles.logo}>
+            <div className={styles.logo} onClick={() => {
+                router.push("/");
+              }}>
               <img src="/logo.png" alt="logo tikss" />
             </div>
             <ul>
@@ -405,11 +416,18 @@ export default function Dashboard() {
         </section>
 
         {/* paiment par carte */}
-        <section
+        { elementcarte && 
+          <section
           className={styles.paiment}
           style={{ display: elementcarte ? "flex" : "none" }}
         >
-          <form onSubmit={handleSubmitCarte}>
+          <PayPalScriptProvider options={initialOptions}>
+            <Checkout 
+            username={username}
+            eventID={idEvent}
+            />
+          </PayPalScriptProvider>
+          {/* <form onSubmit={handleSubmitCarte}>
             <h2>Veuillez rentree vos informations</h2>
             <div onClick={hideElement} className={styles.close}>
               <img src="/illustration/close.png" alt="bouton ferme" />
@@ -479,8 +497,9 @@ export default function Dashboard() {
             <div onClick={goMobile} className={styles.carte}>
               Paiement Mobile {""}
             </div>
-          </form>
+          </form> */}
         </section>
+        }
       </main>
     </>
   );
