@@ -6,10 +6,11 @@ import { useRouter } from "next/router";
 import PhoneInput from "react-phone-input-2";
 import Swal from "sweetalert2";
 
-const linkget = "https://corded-gear-347117.oa.r.appspot.com//live/getuserdatalive";
+const apilink = process.env.NEXT_PUBLIC_API_LINK;
 
-const link = "https://corded-gear-347117.oa.r.appspot.com/live/login";
-const linklogout = "https://corded-gear-347117.oa.r.appspot.com/live/logout";
+const linkget = `${apilink}/live/getuserdatalive`;
+const link = `${apilink}/live/login`;
+const linklogout = `${apilink}/live/logout`;
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -33,8 +34,8 @@ const Signup = () => {
         const data = await response.json();
 
         if (response.ok) {
-        Swal.fire("Deja connecter", data.message, "success");
-        router.push("/dashboard"); // Rediriger vers la page
+          Swal.fire("Deja connecter", data.message, "success");
+          router.push("/dashboard"); // Rediriger vers la page
         }
       } catch (error) {
         console.error(error);
@@ -66,7 +67,7 @@ const Signup = () => {
       if (response.ok) {
         // console.log(data);
         Swal.fire("Success", data.message, "success");
-        router.push('/dashboard');
+        router.push("/dashboard");
       } else {
         console.error(response);
         Swal.fire("Erreur", data.message, "error");

@@ -6,8 +6,10 @@ import { useRouter } from "next/router";
 import PhoneInput from "react-phone-input-2";
 import Swal from "sweetalert2";
 
-const linkget = "https://corded-gear-347117.oa.r.appspot.com/live/getuserdatalive";
-const link = "https://corded-gear-347117.oa.r.appspot.com/live/signup";
+const apilink = process.env.NEXT_PUBLIC_API_LINK;
+
+const linkget = `${apilink}/live/getuserdatalive`;
+const link = `${apilink}/live/signup`;
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -66,7 +68,7 @@ const Signup = () => {
 
       if (response.ok) {
         Swal.fire("Success", data.message, "success");
-        router.push('/dashboard');
+        router.push("/dashboard");
       } else {
         console.error(response);
         Swal.fire("Erreur", data.message, "error");

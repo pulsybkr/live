@@ -8,13 +8,12 @@ import {
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 
-const clientId = process.env.CLIENTIDPP;
+const clientId = process.env.NEXT_PUBLIC_CLIENT_ID_PP;
 
 const link_ticked = "https://corded-gear-347117.oa.r.appspot.com/live/create-tikss-livepaypal";
 
 const initialOptions = {
-  clientId:
-    "AVgGcFT4K6OPxn_cknjXagLBYYtmd-SbxUtsCNcCIwAtmeoYVQVq58nUfJYLdgkUfjbx4uHXOceXZCZM",
+  clientId: String(clientId),
   currency: "EUR",
   intent: "capture",
 };

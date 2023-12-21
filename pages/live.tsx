@@ -3,11 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 
-const isexist = "https://corded-gear-347117.oa.r.appspot.com/live/isreadyexistlive";
-const link = "https://corded-gear-347117.oa.r.appspot.com/live/getuserdatalive";
-const linklogout = "https://corded-gear-347117.oa.r.appspot.com/live/logout";
-const linksession = "https://corded-gear-347117.oa.r.appspot.com/live/create-session-live";
-const linklive = process.env.LINKLIVE;
+const apilink = process.env.NEXT_PUBLIC_API_LINK;
+const linklive = process.env.NEXT_PUBLIC_LINK_LIVE;
+
+const isexist = `${apilink}/live/isreadyexistlive`;
+const link = `${apilink}/live/getuserdatalive`;
+
 
 export default function Dashboard() {
   const [username, setUsername] = useState("");
