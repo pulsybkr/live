@@ -15,7 +15,7 @@ const linklogout = `${apilink}/live/logout`;
 const linksession = `${apilink}/live/create-session-live`;
 
 export default function Dashboard() {
-  const [event, setEvent] = useState("");
+  const [mobile, setMobile] = useState(false);
   const [prenom, setPrenom] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ export default function Dashboard() {
   const [islogacces, setIslogacces] = useState(false);
 
   const router = useRouter();
-  const price = "500";
+  const price = "9.99";
   // const id_product = "price_1OJ1VwEOKP9YSKkD8crga2TB";
   useEffect(() => {
     const checkUserStatus = async () => {
@@ -138,6 +138,14 @@ export default function Dashboard() {
   const goCarte = () => {
     setElementVisible(false);
     setElementCarte(true);
+    setMobile(false)
+  };
+
+  const mobilepaye = () => {
+    // setElementVisible(false);
+    setElementCarte(false);
+    setMobile(true)
+
   };
 
   const goMobile = () => {
@@ -168,8 +176,8 @@ export default function Dashboard() {
             setElementVisible(false);
             Swal.fire(
               "Erreur",
-              `Cet evement n'accepte pas ce mode de paiement`,
-              "error"
+              `Ce mode de paiement n'est pas active pour le moment`,
+              "warning"
             ).then((result) => {
               if (result.isConfirmed) {
                 setElementVisible(false);
@@ -301,12 +309,6 @@ export default function Dashboard() {
 
   // paypal truc 
 
-  const initialOptions = {
-    "clientId": "AVgGcFT4K6OPxn_cknjXagLBYYtmd-SbxUtsCNcCIwAtmeoYVQVq58nUfJYLdgkUfjbx4uHXOceXZCZM",
-    currency: "EUR",
-    intent: "capture",
-  };
-
   return (
     <>
       <main className={styles.main}>
@@ -320,6 +322,9 @@ export default function Dashboard() {
             </div>
             <ul>
               <li onClick={handleLogout}>Déconnexion</li>
+              <li onClick={()=>{
+              router.push("/auth/signup")
+            }}>service client</li>
             </ul>
           </header>
           <section className={styles.texte}>
@@ -348,10 +353,16 @@ export default function Dashboard() {
           style={{ display: elementVisible ? "flex" : "none" }}
         >
           <form onSubmit={handleSubmit}>
-            <h2>Paiement mobile</h2>
-            <div onClick={hideElement} className={styles.close}>
+          <div onClick={hideElement} className={styles.close}>
               <img src="/illustration/close.png" alt="bouton ferme" />
             </div>
+          <div onClick={mobilepaye} className={styles.carte}>
+              Payer par Airtel Money
+            </div>
+            { mobile && 
+              <>
+                            <h2>Paiement mobile</h2>
+            
 
             <div className={styles.element}>
               <label htmlFor="name">
@@ -362,7 +373,7 @@ export default function Dashboard() {
                 required
                 name="name"
                 id="name"
-                placeholder="Prenom"
+                // placeholder="Prenom"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -371,7 +382,7 @@ export default function Dashboard() {
 
             <div className={styles.element}>
               <label htmlFor="phone">
-                Numero Airtel <span>*</span>
+                {/* Numero Airtel <span>*</span> */}
               </label>
               <PhoneInput
                 country="cg"
@@ -402,7 +413,7 @@ export default function Dashboard() {
 
             <div className={styles.total}>
               <p>Total à payer :</p>
-              <h4>{price} FCFA</h4>
+              <h4>{price} €</h4>
             </div>
 
             <input
@@ -411,6 +422,8 @@ export default function Dashboard() {
               value="Confirmer la commande"
               disabled={!isValidPhoneNumber || isFormSubmitted}
             />
+              </>
+            }
             <br />
             <div onClick={goCarte} className={styles.carte}>
               Payer par Carte ou Paypal
@@ -424,6 +437,9 @@ export default function Dashboard() {
           className={styles.paiment}
           style={{ display: elementcarte ? "flex" : "none" }}
         >
+          <div onClick={hideElement} className={styles.close}>
+              <img src="/illustration/close.png" alt="bouton ferme" />
+            </div>
           
             <ProviderWrapper 
             username={username}

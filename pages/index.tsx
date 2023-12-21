@@ -21,7 +21,7 @@ export default function Home() {
               router.push("/auth/login")
             }} className={styles.live}>Live</li>
             <li onClick={()=>{
-              router.push("/auth/signup")
+              router.push("/")
             }}>service client</li>
           </ul>
         </header>

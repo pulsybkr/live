@@ -80,6 +80,18 @@ const Signup = () => {
     }
   };
 
+  const handleInputChange = (e: any) => {
+    const inputValue = e.target.value;
+
+    // Utilisez une expression régulière pour vérifier si le texte ne contient que des chiffres et des lettres
+    const isValidInput = /^[a-zA-Z0-9]*$/.test(inputValue);
+
+    if (isValidInput || inputValue === '') {
+      // Mettez à jour le state uniquement si l'entrée est valide ou si elle est vide
+      setEmail(inputValue);
+    }
+  };
+
   return (
     <main className={styles.main}>
       <span
@@ -98,7 +110,7 @@ const Signup = () => {
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            placeholder="jean jack"
+            // placeholder="jean jack"
           />
         </div>
         <div className={styles.element}>
@@ -106,8 +118,8 @@ const Signup = () => {
           <input
             type="text"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="jean45"
+            onChange={handleInputChange}
+            // placeholder="jean45"
           />
         </div>
         <div className={styles.element}>
