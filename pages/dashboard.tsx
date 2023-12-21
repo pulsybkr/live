@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import ProviderWrapper from "./stripe/checkout";
 const isexist = "https://corded-gear-347117.oa.r.appspot.com/live/isreadyexistlive";
-const link = "https://corded-gear-347117.oa.r.appspot.com/live/getuserdatalive";
+const link = "https://corded-gear-347117.oa.r.appspot.com//live/getuserdatalive";
 const linklogout = "https://corded-gear-347117.oa.r.appspot.com/live/logout";
 const linksession = "https://corded-gear-347117.oa.r.appspot.com/live/create-session-live";
 
@@ -64,7 +64,7 @@ export default function Dashboard() {
     };
 
     checkUserStatus();
-  }, [router]);
+  }, []);
 
   useEffect(() => {
     const isExist = async () => {

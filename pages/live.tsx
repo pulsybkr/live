@@ -45,7 +45,7 @@ export default function Dashboard() {
     };
 
     checkUserStatus();
-  }, [router]);
+  }, []);
 
   // console.log(linklive)
 

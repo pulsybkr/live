@@ -6,10 +6,10 @@ import { useRouter } from "next/router";
 import PhoneInput from "react-phone-input-2";
 import Swal from "sweetalert2";
 
-const linkget = "http://localhost:8080/live/getuserdatalive";
+const linkget = "https://corded-gear-347117.oa.r.appspot.com//live/getuserdatalive";
 
-const link = "http://localhost:8080/live/login";
-const linklogout = "http://localhost:8080/live/logout";
+const link = "https://corded-gear-347117.oa.r.appspot.com/live/login";
+const linklogout = "https://corded-gear-347117.oa.r.appspot.com/live/logout";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -43,7 +43,7 @@ const Signup = () => {
     };
 
     checkUserStatus();
-  }, [router]);
+  }, []);
 
   const handleSignup = async (e: any) => {
     e.preventDefault();
