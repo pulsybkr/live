@@ -6,10 +6,10 @@ import PhoneInput from "react-phone-input-2";
 import { v4 as uuidv4 } from "uuid";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import ProviderWrapper from "./stripe/checkout";
-const isexist = "http://localhost:8080/live/isreadyexistlive";
-const link = "http://localhost:8080/live/getuserdatalive";
-const linklogout = "http://localhost:8080/live/logout";
-const linksession = "http://localhost:8080/live/create-session-live";
+const isexist = "https://corded-gear-347117.oa.r.appspot.com/live/isreadyexistlive";
+const link = "https://corded-gear-347117.oa.r.appspot.com/live/getuserdatalive";
+const linklogout = "https://corded-gear-347117.oa.r.appspot.com/live/logout";
+const linksession = "https://corded-gear-347117.oa.r.appspot.com/live/create-session-live";
 
 export default function Dashboard() {
   const [event, setEvent] = useState("");

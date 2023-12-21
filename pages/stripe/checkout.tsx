@@ -8,7 +8,9 @@ import {
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 
-const link_ticked = "http://localhost:8080/live/create-tikss-livepaypal";
+const clientId = process.env.CLIENTIDPP;
+
+const link_ticked = "https://corded-gear-347117.oa.r.appspot.com/live/create-tikss-livepaypal";
 
 const initialOptions = {
   clientId:
@@ -19,14 +21,18 @@ const initialOptions = {
 
 const Checkout = (props: any) => {
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-  const [username, setUsername] = useState("");
-  const [eventID, setEventID] = useState("");
+  const { username, eventID } = props;
+  // const [username, setUsername] = useState("");
+  // const [eventID, setEventID] = useState("");
 
-  useEffect(() => {
-    // Chargez les données asynchrones ici et mettez à jour les états
-    setUsername(props.username);
-    setEventID(props.eventID);
-  }, []);
+  // useEffect(() => {
+  //   // Chargez les données asynchrones ici et mettez à jour les états
+  //   setUsername(props.username);
+  //   setEventID(props.eventID);
+
+    console.log(" eventprops " + props.username);
+    console.log(" eventprops " + props.eventID);
+  // }, [props]);
 
   const [currency, setCurrency] = useState(options.currency);
   const router = useRouter();
@@ -149,7 +155,7 @@ const ProviderWrapper = (props: any) => {
     // Chargez les données asynchrones ici et mettez à jour les états
     setUsername(props.username);
     setEventID(props.eventID);
-  }, []);
+  }, [props]);
 
   return (
     <PayPalScriptProvider options={initialOptions}>

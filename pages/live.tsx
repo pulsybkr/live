@@ -3,10 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 
-const isexist = "http://localhost:8080/live/isreadyexistlive";
-const link = "http://localhost:8080/live/getuserdatalive";
-const linklogout = "http://localhost:8080/live/logout";
-const linksession = "http://localhost:8080/live/create-session-live";
+const isexist = "https://corded-gear-347117.oa.r.appspot.com/live/isreadyexistlive";
+const link = "https://corded-gear-347117.oa.r.appspot.com/live/getuserdatalive";
+const linklogout = "https://corded-gear-347117.oa.r.appspot.com/live/logout";
+const linksession = "https://corded-gear-347117.oa.r.appspot.com/live/create-session-live";
 const linklive = process.env.LINKLIVE;
 
 export default function Dashboard() {

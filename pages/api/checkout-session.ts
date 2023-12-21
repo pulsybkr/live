@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const linksession = "http://localhost:8080/live/create-session-live";
+const linksession = "https://corded-gear-347117.oa.r.appspot.com/live/create-session-live";
 
 export default async function handler(
   req: NextApiRequest,
