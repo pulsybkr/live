@@ -9,8 +9,12 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 
 const clientId = process.env.NEXT_PUBLIC_CLIENT_ID_PP;
+const apilink = process.env.NEXT_PUBLIC_API_LINK;
+const price = process.env.NEXT_PUBLIC_PRICE;
 
-const link_ticked = "https://corded-gear-347117.oa.r.appspot.com/live/create-tikss-livepaypal";
+
+const link_ticked = `${apilink}/live/create-tikss-livepaypal`;
+const link = `${apilink}/live/login`;
 
 const initialOptions = {
   clientId: String(clientId),
@@ -30,7 +34,7 @@ const Checkout = (props: any) => {
   //   setEventID(props.eventID);
 
     console.log(" eventprops " + props.username);
-    console.log(" eventprops " + props.eventID);
+    // console.log(" eventprops " + props.eventID);
   // }, [props]);
 
   const [currency, setCurrency] = useState(options.currency);
@@ -53,7 +57,7 @@ const Checkout = (props: any) => {
       purchase_units: [
         {
           amount: {
-            value: "8.99",
+            value: price,
           },
         },
       ],
