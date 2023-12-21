@@ -20,6 +20,9 @@ export default function Home() {
             <li onClick={()=>{
               router.push("/auth/login")
             }} className={styles.live}>Live</li>
+            <li onClick={()=>{
+              router.push("/auth/signup")
+            }}>service client</li>
           </ul>
         </header>
         <section className={styles.texte}>

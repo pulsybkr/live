@@ -120,7 +120,7 @@ const Signup = () => {
       <h1>Connection</h1>
       <form>
         <div className={styles.element}>
-          <label>username:</label>
+          <label>Nom d'utilisateur :</label>
           <input
             type="text"
             value={email}
@@ -143,15 +143,17 @@ const Signup = () => {
         </button>
       </form>
       <p>
-        Si vous n'avez pas un compte connecter vous
-        <span
+        Si vous n'avez pas un compte
+        
+      </p>
+      <span
+        className={styles.boutonlog}
           onClick={() => {
             router.push("/auth/signup");
           }}
         >
-          ici
+          Cree un compte
         </span>
-      </p>
       <p>
         <span onClick={handleLogout}>Logout</span>
       </p>

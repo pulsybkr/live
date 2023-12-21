@@ -31,14 +31,14 @@ export default function Dashboard() {
   const [reseau, setReseau] = useState("");
   const [transactionEnCours, setTransactionEnCours] = useState(false);
   const momo = false;
-  const airtel = true;
+  const airtel = false;
   // Ajoutez une propriété pour l'ID de l'événement
   const [idEvent, setIdEvent] = useState("");
   const [islogacces, setIslogacces] = useState(false);
 
   const router = useRouter();
   const price = "500";
-  const id_product = "price_1OJ1VwEOKP9YSKkD8crga2TB";
+  // const id_product = "price_1OJ1VwEOKP9YSKkD8crga2TB";
   useEffect(() => {
     const checkUserStatus = async () => {
       try {
@@ -264,40 +264,40 @@ export default function Dashboard() {
     );
   };
 
-  const handleSubmitCarte = async (e: any) => {
-    e.preventDefault();
-    hideElement();
+  // const handleSubmitCarte = async (e: any) => {
+  //   e.preventDefault();
+  //   hideElement();
 
-    Swal.fire(
-      "Redirection",
-      "vous allez etre rediger vers la page de paiement",
-      "warning"
-    );
+  //   Swal.fire(
+  //     "Redirection",
+  //     "vous allez etre rediger vers la page de paiement",
+  //     "warning"
+  //   );
 
-    const transID = uuidv4().substr(0, 14);
+  //   const transID = uuidv4().substr(0, 14);
 
-    const postData = {
-      session_id: transID,
-      id_event: idEvent,
-      id_product,
-      name,
-      username,
-      email: email,
-      number: phonecarte,
-    };
+  //   const postData = {
+  //     session_id: transID,
+  //     id_event: idEvent,
+  //     id_product,
+  //     name,
+  //     username,
+  //     email: email,
+  //     number: phonecarte,
+  //   };
 
-    // console.log(postData)
+  //   // console.log(postData)
 
-    fetch(linksession, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
-    }).then((res) => res.json());
+  //   fetch(linksession, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(postData),
+  //   }).then((res) => res.json());
 
-    router.push(`/stripe/stripe?id=${transID}`);
-  };
+  //   router.push(`/stripe/stripe?id=${transID}`);
+  // };
 
   // paypal truc 
 
@@ -371,7 +371,7 @@ export default function Dashboard() {
 
             <div className={styles.element}>
               <label htmlFor="phone">
-                Numero MTN ou Airtel <span>*</span>
+                Numero Airtel <span>*</span>
               </label>
               <PhoneInput
                 country="cg"

@@ -103,3 +103,90 @@
   border-radius: 50px;
   font-family: 'Courier New', Courier, monospace;
 }
+
+@media screen and (max-width: 1050px){
+  .texte h1{
+    font-size: 3.5rem;
+  }
+  .texte h2{
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 650px){
+  .texte{
+    text-align: center;
+  }
+  .texte h1{
+    font-size: 3rem;
+  }
+  .texte h2{
+    font-size: 2rem;
+  }
+
+  .contain header{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .contain .logo{
+    margin-bottom: 10px;
+  }
+
+  .contain header ul li{
+    padding: 7px 15px;
+    border-radius: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 450px){
+  .texte{
+    text-align: center;
+  }
+  .texte h1{
+    font-size: 2.5rem;
+  }
+
+  .texte h1 span{
+    font-size: 2rem;
+  }
+  .texte h2{
+    font-size: 1.5rem;
+  }
+
+  .texte h2 span{
+    font-size: 1rem;
+  }
+
+  .contain header ul li{
+    padding: 7px 15px;
+    border-radius: 20px;
+    margin-left: 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 350px){
+  .texte{
+    text-align: center;
+  }
+  .texte h1{
+    font-size: 2rem;
+  }
+
+  .texte h1 span{
+    font-size: 1.5rem;
+  }
+  .texte h2{
+    font-size: 1.5rem;
+  }
+
+  .texte h2 span{
+    font-size: 0.8rem;
+  }
+}

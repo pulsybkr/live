@@ -102,7 +102,7 @@ const Signup = () => {
           />
         </div>
         <div className={styles.element}>
-          <label>username:</label>
+          <label>Nom d'utilisateur :</label>
           <input
             type="text"
             value={email}
@@ -112,7 +112,7 @@ const Signup = () => {
         </div>
         <div className={styles.element}>
           <PhoneInput
-            country="cg"
+            country="auto"
             enableSearch={true}
             inputProps={{
               name: "phoneNumber",
@@ -140,15 +140,16 @@ const Signup = () => {
       </form>
 
       <p>
-        Si vous avez deja un compte connecter{" "}
-        <span
+        Si vous avez deja un compte
+      </p>
+      <span
+        className={styles.boutonlog}
           onClick={() => {
             router.push("/auth/login");
           }}
         >
-          ici
+          connectez vous
         </span>
-      </p>
     </main>
   );
 };

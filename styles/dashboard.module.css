@@ -243,11 +243,12 @@
 
 
 .carte{
-  margin-top: 40px;
-  background: black;
+  margin-top: 50px;
+  background: white;
   border-radius: 10px;
   padding: 10px 20px;
   cursor: pointer;
+  color: black;
 }
 
 .lecteur{
