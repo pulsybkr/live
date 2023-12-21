@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import PhoneInput from "react-phone-input-2";
 import { v4 as uuidv4 } from "uuid";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import Checkout from "./stripe/checkout";
+import ProviderWrapper from "./stripe/checkout";
 const isexist = "http://localhost:8080/live/isreadyexistlive";
 const link = "http://localhost:8080/live/getuserdatalive";
 const linklogout = "http://localhost:8080/live/logout";
@@ -421,12 +421,12 @@ export default function Dashboard() {
           className={styles.paiment}
           style={{ display: elementcarte ? "flex" : "none" }}
         >
-          <PayPalScriptProvider options={initialOptions}>
-            <Checkout 
+          
+            <ProviderWrapper 
             username={username}
             eventID={idEvent}
             />
-          </PayPalScriptProvider>
+          
           {/* <form onSubmit={handleSubmitCarte}>
             <h2>Veuillez rentree vos informations</h2>
             <div onClick={hideElement} className={styles.close}>
