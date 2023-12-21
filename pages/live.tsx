@@ -7,6 +7,7 @@ const isexist = "http://localhost:8080/live/isreadyexistlive";
 const link = "http://localhost:8080/live/getuserdatalive";
 const linklogout = "http://localhost:8080/live/logout";
 const linksession = "http://localhost:8080/live/create-session-live";
+const linklive = process.env.LINKLIVE;
 
 export default function Dashboard() {
   const [username, setUsername] = useState("");
@@ -14,6 +15,7 @@ export default function Dashboard() {
   const [islogacces, setIslogacces] = useState(false);
   const [prenom, setPrenom] = useState("");
   const router = useRouter();
+
 
   useEffect(() => {
     const checkUserStatus = async () => {
@@ -44,6 +46,8 @@ export default function Dashboard() {
 
     checkUserStatus();
   }, [router]);
+
+  // console.log(linklive)
 
   useEffect(() => {
     const isExist = async () => {
@@ -120,7 +124,7 @@ export default function Dashboard() {
             style={{ display: islogacces ? "flex" : "none" }}
           >
             <iframe
-              src="https://embed.api.video/live/li67SYnAE3n3rLvIi8iJBhgs"
+              src={linklive}
               width="100%"
               height="100%"
               frameBorder="0"
