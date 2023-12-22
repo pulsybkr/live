@@ -14,6 +14,7 @@ const link = `${apilink}/live/getuserdatalive`;
 const linklogout = `${apilink}/live/logout`;
 const linksession = `${apilink}/live/create-session-live`;
 const elokopay = `${apilink}/payment/elokopay`;
+const linkairtel = `${apilink}/payment/airtel/live`
 
 export default function Dashboard() {
   const amount = 500;
@@ -33,7 +34,7 @@ export default function Dashboard() {
   const [reseau, setReseau] = useState("");
   const [transactionEnCours, setTransactionEnCours] = useState(false);
   const momo = false;
-  const airtel = false;
+  const airtel = true;
   // Ajoutez une propriété pour l'ID de l'événement
   const [idEvent, setIdEvent] = useState("");
   const [islogacces, setIslogacces] = useState(false);
@@ -257,6 +258,7 @@ export default function Dashboard() {
   }, [phoneNumber]);
 
   const networkImage = getNetworkImage(reseau);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     hideElement();
@@ -269,7 +271,51 @@ export default function Dashboard() {
         "Patientez, Vous allez être rediriger vers la page de paiement. Ne quitter pas cette page",
         "warning"
       );
-      if (reseau == "airtel" && airtel) {
+      if (reseau == "airtel") {
+        // console.log("ça passe")
+        try {
+          const response = await fetch(linkairtel, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              amount,
+              phoneNumber: phone[1],
+              name,
+              username
+            }),
+          });
+  
+          // Récupérer la réponse JSON
+          const data = await response.json();
+  
+          if (response.ok) {
+            console.log(data);
+  
+            Swal.fire({
+              title: "Transaction Reussi",
+              text: "Vous pouvez regarder le live dès qu'il aura commencé",
+              icon: "success",
+              confirmButtonText: "Ok",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                setTransactionEnCours(false);
+              }
+              router.reload();
+            });
+          } else {
+            Swal.fire("Erreur", `${data.message}`, "error").then((result) => {
+              if (result.isConfirmed) {
+                setTransactionEnCours(false);
+              }
+              router.reload();
+            });
+          }
+        } catch (error) {
+          console.error(error);
+          setTransactionEnCours(false);
+        }
       } else {
         if (momo) {
           try {
