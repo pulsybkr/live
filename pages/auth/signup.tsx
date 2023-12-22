@@ -86,7 +86,7 @@ const Signup = () => {
     // Utilisez une expression régulière pour vérifier si le texte ne contient que des chiffres et des lettres
     const isValidInput = /^[a-zA-Z0-9]*$/.test(inputValue);
 
-    if (isValidInput || inputValue === '') {
+    if (isValidInput || inputValue === "") {
       // Mettez à jour le state uniquement si l'entrée est valide ou si elle est vide
       setEmail(inputValue);
     }
@@ -151,17 +151,15 @@ const Signup = () => {
         </button>
       </form>
 
-      <p>
-        Si vous avez deja un compte
-      </p>
+      <p>Si vous avez deja un compte</p>
       <span
         className={styles.boutonlog}
-          onClick={() => {
-            router.push("/auth/login");
-          }}
-        >
-          connectez vous
-        </span>
+        onClick={() => {
+          router.push("/auth/login");
+        }}
+      >
+        connectez vous
+      </span>
     </main>
   );
 };

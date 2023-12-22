@@ -14,7 +14,7 @@ const link = `${apilink}/live/getuserdatalive`;
 const linklogout = `${apilink}/live/logout`;
 const linksession = `${apilink}/live/create-session-live`;
 const elokopay = `${apilink}/payment/elokopay`;
-const linkairtel = `${apilink}/payment/airtel/live`
+const linkairtel = `${apilink}/payment/airtel/live`;
 
 export default function Dashboard() {
   const amount = 500;
@@ -34,7 +34,7 @@ export default function Dashboard() {
   const [reseau, setReseau] = useState("");
   const [transactionEnCours, setTransactionEnCours] = useState(false);
   const momo = false;
-  const airtel = true;
+  const airtel = false;
   // Ajoutez une propriété pour l'ID de l'événement
   const [idEvent, setIdEvent] = useState("");
   const [islogacces, setIslogacces] = useState(false);
@@ -283,16 +283,16 @@ export default function Dashboard() {
               amount,
               phoneNumber: phone[1],
               name,
-              username
+              username,
             }),
           });
-  
+
           // Récupérer la réponse JSON
           const data = await response.json();
-  
+
           if (response.ok) {
             console.log(data);
-  
+
             Swal.fire({
               title: "Transaction Reussi",
               text: "Vous pouvez regarder le live dès qu'il aura commencé",
@@ -409,7 +409,7 @@ export default function Dashboard() {
               <li onClick={handleLogout}>Déconnexion</li>
               <li
                 onClick={() => {
-                  router.push("/auth/signup");
+                  router.push("/contact");
                 }}
               >
                 service client

@@ -12,7 +12,6 @@ const clientId = process.env.NEXT_PUBLIC_CLIENT_ID_PP;
 const apilink = process.env.NEXT_PUBLIC_API_LINK;
 const price = process.env.NEXT_PUBLIC_PRICE;
 
-
 const link_ticked = `${apilink}/live/create-tikss-livepaypal`;
 const link = `${apilink}/live/login`;
 
@@ -33,8 +32,8 @@ const Checkout = (props: any) => {
   //   setUsername(props.username);
   //   setEventID(props.eventID);
 
-    console.log(" eventprops " + props.username);
-    // console.log(" eventprops " + props.eventID);
+  console.log(" eventprops " + props.username);
+  // console.log(" eventprops " + props.eventID);
   // }, [props]);
 
   const [currency, setCurrency] = useState(options.currency);

@@ -9,14 +9,12 @@ const linklive = process.env.NEXT_PUBLIC_LINK_LIVE;
 const isexist = `${apilink}/live/isreadyexistlive`;
 const link = `${apilink}/live/getuserdatalive`;
 
-
 export default function Dashboard() {
   const [username, setUsername] = useState("");
   const [idEvent, setIdEvent] = useState("");
   const [islogacces, setIslogacces] = useState(false);
   const [prenom, setPrenom] = useState("");
   const router = useRouter();
-
 
   useEffect(() => {
     const checkUserStatus = async () => {
@@ -62,13 +60,13 @@ export default function Dashboard() {
             username,
           }),
         });
-  
+
         const data = await response.json();
-  
+
         if (response.ok) {
           console.log(data);
           console.log(username);
-  
+
           if (data.bool) {
             setIslogacces(true);
           } else {
@@ -88,14 +86,13 @@ export default function Dashboard() {
         console.error("Erreur lors de l'appel API isexist :", error);
       }
     };
-  
+
     // Vérifier si username a changé avant d'appeler la fonction isExist
     if (username) {
       isExist();
     }
   }, [username, islogacces, router]);
-  
-  
+
   // console.log(username);
   const handleLogout = async () => {
     router.push("/dashboard");
@@ -119,21 +116,21 @@ export default function Dashboard() {
             </ul>
           </header>
 
-          { islogacces && 
+          {islogacces && (
             <section
-            className={styles.livestream}
-            style={{ display: islogacces ? "flex" : "none" }}
-          >
-            <iframe
-              src={linklive}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              scrolling="no"
-              allowFullScreen={true}
-            ></iframe>
-          </section>
-          }
+              className={styles.livestream}
+              style={{ display: islogacces ? "flex" : "none" }}
+            >
+              <iframe
+                src={linklive}
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                scrolling="no"
+                allowFullScreen={true}
+              ></iframe>
+            </section>
+          )}
         </section>
       </main>
     </>

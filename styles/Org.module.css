@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&display=swap');
+/*
+font-family: 'Cabin', sans-serif;
+  font-family: 'gallery_modernregular', serif;
+font-family: 'Matter', sans-serif;
+font-family: 'Titan One', cursive;*/
+
+/* composant naviation */
+/* headerI */
+
+.main header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo{
+    width: 70px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .logo img{
+    width: 100%;
+    height: auto;
+  }
+  
+  .main header ul{
+    display: flex;
+    list-style: none;
+    text-transform: capitalize;
+  }
+  
+  .main header ul li{
+    padding: 8px 16px;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+.return{
+  position: fixed;
+  background-color: white;
+  color: black;
+  font-size: 1.5rem;
+  padding: 10px 17px;
+  font-weight: 900;
+  border-radius: 50%;
+  top: 80px;
+  left: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.return:hover{
+  transform: scale(0.9);
+}
+
+.headerI{
+  color: white;
+  padding: 100px 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh;
+}
+
+.headerI h2{
+  font-family: 'gallery_modernregular', serif;
+  font-size: 5rem;
+  font-weight: bolder;
+  margin-top: 50px;
+}
+
+.headerI h3{
+  width: 70%;
+  font-family: 'Matter', sans-serif;
+  font-size: 2rem;
+  line-height: 1.3em;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+
+/* main */
+.main{
+  width: 100%;
+  padding: 50px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main button{
+  color: black;
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+ 
+}
+
+.main form{
+  margin-top: 200px;
+  display: flex !important;
+  flex-direction: column !important;
+  width: auto;
+  align-items: center;
+}
+
+.main form h2{
+  font-family: 'Cabin', sans-serif !important;
+}
+
+.main form input{
+  color: white !important;
+  border: 0.01em solid rgba(255, 255, 255, 0.25) !important;
+  padding: 25px !important;
+  background: none !important;
+  border-radius: 50px !important;
+  margin-bottom: 20px !important;
+  width: 400px;
+}
+
+.main form textarea{
+  color: white !important;
+  border: 0.01em solid rgba(255, 255, 255, 0.25) !important;
+  padding: 25px;
+  background: none !important;
+  border-radius: 20px ;
+  margin-bottom: 20px ;
+  width: 400px;
+}
+
+.main form input::placeholder{
+  color: white !important;
+  font-size: 1rem;
+  font-family: 'Matter', sans-serif !important;
+}
+
+.main form textarea::placeholder{
+  color: white !important;
+  font-size: 1rem !important;
+  font-family: 'Matter', sans-serif !important;
+}
+
+.main form p{
+  width: 400px;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+  font-family: 'Matter', sans-serif;
+  text-align: justify;
+  padding: 10px;
+}
+
+.main form div input{
+  padding-left: 50px !important;
+}
+
+.main form .label div{
+  display: flex;
+}
+
+.main form .label div input{
+  width: 200px !important;
+}
+
+.main form .submit{
+  background: #1a8cff !important;
+  color: white !important;
+  font-family: 'Matter', sans-serif;
+  font-size: 1.2rem;
+  margin-top: 50px;
+  width: 300px !important;
+  padding: 10px 20px !important;
+  font-weight: bolder;
+}
+
+/* sortir */
+.sortir{
+  width: 70px;
+  z-index: 9999 !important;
+  position: fixed;
+  top: 1%;
+  right: 10%;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.sortir2{
+  width: 70px;
+  z-index: 9999 !important;
+  position: fixed;
+  top: 1%;
+  right: 30%;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.sortir img{
+  width: 100%;
+  border-radius: 50%;
+  transition: border 0.3s ease;
+}
+
+.sortir img:hover{
+  border: 2px solid white;
+}
+
+@media screen and (max-width: 690px){
+
+  .main{
+    padding: 15px;
+  }
+
+  .main form {
+    width: 100%;
+    padding: 20px;
+  }
+  .main form input{
+    width: 100%;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 20px ;
+  }
+
+  .main form p{
+    width: 100%;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 20px ;
+  }
+
+  .main form textarea{
+    width: 100%;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 20px ;
+  }
+
+  .main form h2{
+    font-family: 'Cabin', sans-serif !important;
+    font-size: 2rem !important;
+  }
+}
+
+@media screen and (max-width: 550px){
+    .main header{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .main .logo{
+        margin-bottom: 10px;
+    }
+
+    .main header ul li{
+        padding: 4px 10px;
+        border: 1px solid white;
+        border-radius: 20px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+}
