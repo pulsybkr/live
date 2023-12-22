@@ -13,8 +13,10 @@ const isexist = `${apilink}/live/isreadyexistlive`;
 const link = `${apilink}/live/getuserdatalive`;
 const linklogout = `${apilink}/live/logout`;
 const linksession = `${apilink}/live/create-session-live`;
+const elokopay = `${apilink}/payment/elokopay`;
 
 export default function Dashboard() {
+  const amount = 500;
   const [mobile, setMobile] = useState(false);
   const [prenom, setPrenom] = useState("");
   const [name, setName] = useState("");
@@ -30,7 +32,7 @@ export default function Dashboard() {
   const [phonecarte, setPhonecarte] = useState("");
   const [reseau, setReseau] = useState("");
   const [transactionEnCours, setTransactionEnCours] = useState(false);
-  const momo = false;
+  const momo = true;
   const airtel = false;
   // Ajoutez une propriété pour l'ID de l'événement
   const [idEvent, setIdEvent] = useState("");
@@ -138,14 +140,13 @@ export default function Dashboard() {
   const goCarte = () => {
     setElementVisible(false);
     setElementCarte(true);
-    setMobile(false)
+    setMobile(false);
   };
 
   const mobilepaye = () => {
     // setElementVisible(false);
     setElementCarte(false);
-    setMobile(true)
-
+    setMobile(true);
   };
 
   const goMobile = () => {
@@ -169,7 +170,7 @@ export default function Dashboard() {
               "error"
             );
           }
-        } else if (numb[1].startsWith("05")) {
+        } else if (numb[1].startsWith("05") || numb[1].startsWith("04")) {
           if (airtel) {
             setReseau("airtel");
           } else {
@@ -198,11 +199,6 @@ export default function Dashboard() {
             router.reload();
           });
         }
-      }
-
-      if (numb[1].length > 8 && numb[1].length < 10) {
-        setIsValidPhoneNumber(true);
-        setPhoneTel(numb[1]);
       }
     }
   }
@@ -264,12 +260,52 @@ export default function Dashboard() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     hideElement();
+    if (phoneNumber.length < 12) {
+      alert("Numero non valide");
+    } else {
+      const phone = phoneNumber.split("242");
+      Swal.fire(
+        "Transaction en cours",
+        "Patientez, Vous allez être rediriger vers la page de paiement. Ne quitter pas cette page",
+        "warning"
+      );
+      if (reseau == "airtel" && airtel) {
+      } else {
+        if (momo) {
+          try {
+            const response = await fetch(elokopay, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                username,
+                amount,
+                name,
+                phone: phone[1],
+              }),
+            });
 
-    Swal.fire(
-      "Transaction en cours",
-      "Confirmer la transaction ne recharger pas la page et ne changer pas de page",
-      "warning"
-    );
+            const data = await response.json();
+
+            if (response.ok) {
+              const token = data.data;
+              router.push(`https://ekolopay.com/purchase-product/${token}`);
+              // console.log(token);
+            } else {
+              Swal.fire(
+                "Erreur",
+                "Reesayer. Si le problème persiste, veuillez contacter le service client.",
+                "error"
+              );
+            }
+          } catch (error) {
+            // Gérer les erreurs liées à la requête ici
+            console.error("Erreur lors de l'appel API isexist :", error);
+          }
+        }
+      }
+    }
   };
 
   // const handleSubmitCarte = async (e: any) => {
@@ -307,7 +343,7 @@ export default function Dashboard() {
   //   router.push(`/stripe/stripe?id=${transID}`);
   // };
 
-  // paypal truc 
+  // paypal truc
 
   return (
     <>
@@ -315,18 +351,26 @@ export default function Dashboard() {
         {/* contenaire */}
         <section className={styles.contain}>
           <header>
-            <div className={styles.logo} onClick={() => {
+            <div
+              className={styles.logo}
+              onClick={() => {
                 router.push("/");
-              }}>
+              }}
+            >
               <img src="/logo.png" alt="logo tikss" />
             </div>
             <ul>
               <li onClick={handleLogout}>Déconnexion</li>
-              <li onClick={()=>{
-              router.push("/auth/signup")
-            }}>service client</li>
+              <li
+                onClick={() => {
+                  router.push("/auth/signup");
+                }}
+              >
+                service client
+              </li>
             </ul>
           </header>
+          <section>{/* <p>Utilisateur connecté: {username}</p> */}</section>
           <section className={styles.texte}>
             <h1>
               DIESEL GUCCI <br />
@@ -353,77 +397,76 @@ export default function Dashboard() {
           style={{ display: elementVisible ? "flex" : "none" }}
         >
           <form onSubmit={handleSubmit}>
-          <div onClick={hideElement} className={styles.close}>
+            <div onClick={hideElement} className={styles.close}>
               <img src="/illustration/close.png" alt="bouton ferme" />
             </div>
-          <div onClick={mobilepaye} className={styles.carte}>
+            <div onClick={mobilepaye} className={styles.carte}>
               Payer par Airtel Money
             </div>
-            { mobile && 
+            {mobile && (
               <>
-                            <h2>Paiement mobile</h2>
-            
+                <h2>Paiement mobile</h2>
 
-            <div className={styles.element}>
-              <label htmlFor="name">
-                Nom et Prenom <span>*</span>
-              </label>
-              <input
-                type="text"
-                required
-                name="name"
-                id="name"
-                // placeholder="Prenom"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
-            </div>
-
-            <div className={styles.element}>
-              <label htmlFor="phone">
-                {/* Numero Airtel <span>*</span> */}
-              </label>
-              <PhoneInput
-                country="cg"
-                enableSearch={false}
-                disableDropdown
-                inputProps={{
-                  name: "phoneNumber",
-                  required: true,
-                  autoFocus: true,
-                }}
-                value={phoneNumber}
-                masks={{ cg: ".. ... .. .." }}
-                onChange={(value, country, event) => {
-                  setPhoneNumber(value);
-                }}
-              />
-            </div>
-
-            <div className={styles.logoreseau}>
-              {/* Afficher l'image si `networkImage` n'est pas une chaîne de caractères vide */}
-              {networkImage && (
-                <div>
-                  <label>Vous allez payer avec : </label>
-                  <img src={networkImage} alt="Logo réseau" />
+                <div className={styles.element}>
+                  <label htmlFor="name">
+                    Nom et Prenom <span>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    name="name"
+                    id="name"
+                    // placeholder="Prenom"
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  />
                 </div>
-              )}
-            </div>
 
-            <div className={styles.total}>
-              <p>Total à payer :</p>
-              <h4>{price} €</h4>
-            </div>
+                <div className={styles.element}>
+                  <label htmlFor="phone">
+                    {/* Numero Airtel <span>*</span> */}
+                  </label>
+                  <PhoneInput
+                    country="cg"
+                    enableSearch={false}
+                    disableDropdown
+                    inputProps={{
+                      name: "phoneNumber",
+                      required: true,
+                      autoFocus: true,
+                    }}
+                    value={phoneNumber}
+                    masks={{ cg: ".. ... .. .." }}
+                    onChange={(value, country, event) => {
+                      setPhoneNumber(value);
+                    }}
+                  />
+                </div>
 
-            <input
-              className={styles.button}
-              type="submit"
-              value="Confirmer la commande"
-              disabled={!isValidPhoneNumber || isFormSubmitted}
-            />
+                <div className={styles.logoreseau}>
+                  {/* Afficher l'image si `networkImage` n'est pas une chaîne de caractères vide */}
+                  {networkImage && (
+                    <div>
+                      <label>Vous allez payer avec : </label>
+                      <img src={networkImage} alt="Logo réseau" />
+                    </div>
+                  )}
+                </div>
+
+                <div className={styles.total}>
+                  <p>Total à payer :</p>
+                  <h4>{price} €</h4>
+                </div>
+
+                <input
+                  className={styles.button}
+                  type="submit"
+                  value="Confirmer la commande"
+                  // disabled={!isValidPhoneNumber}
+                />
               </>
-            }
+            )}
             <br />
             <div onClick={goCarte} className={styles.carte}>
               Payer par Carte ou Paypal
@@ -432,21 +475,18 @@ export default function Dashboard() {
         </section>
 
         {/* paiment par carte */}
-        { elementcarte && 
+        {elementcarte && (
           <section
-          className={styles.paiment}
-          style={{ display: elementcarte ? "flex" : "none" }}
-        >
-          <div onClick={hideElement} className={styles.close}>
+            className={styles.paiment}
+            style={{ display: elementcarte ? "flex" : "none" }}
+          >
+            <div onClick={hideElement} className={styles.close}>
               <img src="/illustration/close.png" alt="bouton ferme" />
             </div>
-          
-            <ProviderWrapper 
-            username={username}
-            eventID={idEvent}
-            />
-          
-          {/* <form onSubmit={handleSubmitCarte}>
+
+            <ProviderWrapper username={username} eventID={idEvent} />
+
+            {/* <form onSubmit={handleSubmitCarte}>
             <h2>Veuillez rentree vos informations</h2>
             <div onClick={hideElement} className={styles.close}>
               <img src="/illustration/close.png" alt="bouton ferme" />
@@ -517,8 +557,8 @@ export default function Dashboard() {
               Paiement Mobile {""}
             </div>
           </form> */}
-        </section>
-        }
+          </section>
+        )}
       </main>
     </>
   );
