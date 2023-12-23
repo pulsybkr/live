@@ -358,3 +358,40 @@
     font-size: 0.8rem;
   }
 }
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  backdrop-filter: blur(20px);
+}
+
+.userRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.columnLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.connected {
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+}
+
+.disconnected {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+}
