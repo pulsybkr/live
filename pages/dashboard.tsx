@@ -34,7 +34,7 @@ export default function Dashboard() {
   const [reseau, setReseau] = useState("");
   const [transactionEnCours, setTransactionEnCours] = useState(false);
   const momo = true;
-  const airtel = false;
+  const airtel = true;
   // Ajoutez une propriété pour l'ID de l'événement
   const [idEvent, setIdEvent] = useState("");
   const [islogacces, setIslogacces] = useState(false);
