@@ -336,7 +336,7 @@ export default function Dashboard() {
 
             if (response.ok) {
               const token = data.data;
-              router.push(`https://ekolopay.com/purchase-product/${token}`);
+              router.push(`https://collect.ekolopay.com/purchase-product/${token}`);
               // console.log(token);
             } else {
               Swal.fire(
